@@ -1,0 +1,21 @@
+{% extends 'registration/base.html' %}
+
+{% block title %}{% block title-meta %}حذف مقاله{% endblock %}{% endblock %}
+
+{% block main %}
+    <div class="col-md-8 mx-auto">
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3>حذف مقاله</h3>
+            </div>
+            <div class="card-body text-center">
+                <form method="post">
+                    {% csrf_token %}
+                    <p>آیا میخواهید این مقاله را حذف کنید؟</p>
+                    <button class="btn btn-danger" type="submit">تایید</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

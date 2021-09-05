@@ -1,0 +1,24 @@
+{% load base_tags %}
+<div class="navbar d-flex justify-content-start nav my-0 py-2">
+    <a class="navbar-brand" href="{% url 'home' %}">{% title %}</a>
+    <ul>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">خانه</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" target="_blank" href="{% url 'account:home' %}">پروفایل</a>
+        </li>
+        {% for category in categories %}
+            {% if category.parent == None %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'category' category.slug %}">
+                        {{ category.title }}
+                    </a>
+                    {% if category.children.active %}
+                        {% include 'blog/partials/category_loop.html' %}
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
